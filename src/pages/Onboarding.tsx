@@ -77,6 +77,7 @@ export default function Onboarding() {
   };
 
   const finishOnboarding = () => {
+    localStorage.setItem("spotter_onboarding_complete", "true");
     navigate("/");
   };
 
