@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Header } from "@/components/Header";
 import { MatchCard } from "@/components/MatchCard";
 import { Button } from "@/components/ui/button";
-import { SlidersHorizontal } from "lucide-react";
+import { FilterSheet } from "@/components/FilterSheet";
 import { toast } from "sonner";
 
 const mockMatches = [
@@ -68,11 +68,7 @@ export default function SpotFeed() {
       <Header
         title="Find Your Spot"
         subtitle="Gym buddies matched to your vibe"
-        action={
-          <Button variant="ghost" size="icon-sm">
-            <SlidersHorizontal className="w-5 h-5" />
-          </Button>
-        }
+        action={<FilterSheet />}
       />
 
       <div className="px-4 space-y-4">

@@ -58,9 +58,9 @@ export default function Profile() {
               alt={userProfile.name}
               className="w-24 h-24 rounded-full object-cover border-4 border-primary/30"
             />
-            <button className="absolute bottom-0 right-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+            <Link to="/profile/edit" className="absolute bottom-0 right-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center">
               <Edit3 className="w-4 h-4 text-primary-foreground" />
-            </button>
+            </Link>
           </div>
           
           <h2 className="font-display text-2xl font-bold mt-4">

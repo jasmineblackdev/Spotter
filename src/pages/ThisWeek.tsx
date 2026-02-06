@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { WorkoutInviteCard } from "@/components/WorkoutInviteCard";
-import { EmptyState } from "@/components/EmptyState";
+import { CreateInviteSheet } from "@/components/CreateInviteSheet";
+import { OfferToJoinSheet } from "@/components/OfferToJoinSheet";
+import { DirectionsSheet } from "@/components/DirectionsSheet";
 import { Button } from "@/components/ui/button";
-import { Plus, Calendar, Dumbbell, PersonStanding } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const pendingInvites = [
   {
@@ -47,25 +51,36 @@ const nearbyTraining = [
 ];
 
 export default function ThisWeek() {
+  const navigate = useNavigate();
+  const [directionsOpen, setDirectionsOpen] = useState(false);
+  const [directionsLocation, setDirectionsLocation] = useState("");
+  const [offerOpen, setOfferOpen] = useState(false);
+  const [offerPerson, setOfferPerson] = useState(nearbyTraining[0]);
+
   const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
     month: "short",
     day: "numeric",
   });
 
+  const handleDirections = (location: string) => {
+    setDirectionsLocation(location);
+    setDirectionsOpen(true);
+  };
+
+  const handleOffer = (person: typeof nearbyTraining[0]) => {
+    setOfferPerson(person);
+    setOfferOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-background pb-24">
       <Header
         title="This Week"
-        action={
-          <Button variant="spot" size="icon">
-            <Plus className="w-5 h-5" />
-          </Button>
-        }
+        action={<CreateInviteSheet />}
       />
 
       <div className="px-4 space-y-6">
-        {/* Date display */}
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Calendar className="w-4 h-4" />
           <span>📍 Today, {today}</span>
@@ -96,7 +111,8 @@ export default function ThisWeek() {
                 key={session.id}
                 type="confirmed"
                 {...session}
-                onMessage={() => toast.info(`Opening chat with ${session.from}`)}
+                onMessage={() => navigate(`/chat/${3}`)}
+                onDirections={() => handleDirections(session.location!)}
               />
             ))}
           </div>
@@ -107,7 +123,7 @@ export default function ThisWeek() {
           <h2 className="micro mb-3">👀 Who's Training Nearby</h2>
           <div className="space-y-3">
             {nearbyTraining.map((person) => (
-              <div 
+              <div
                 key={person.id}
                 className="bg-card rounded-2xl p-4 border border-border/50 flex items-center gap-3"
               >
@@ -121,7 +137,7 @@ export default function ThisWeek() {
                   <div className="text-sm text-muted-foreground">{person.time}</div>
                   <div className="text-sm text-primary mt-1">"{person.note}"</div>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" onClick={() => handleOffer(person)}>
                   Offer to Join
                 </Button>
               </div>
@@ -129,6 +145,9 @@ export default function ThisWeek() {
           </div>
         </section>
       </div>
+
+      <DirectionsSheet open={directionsOpen} onOpenChange={setDirectionsOpen} location={directionsLocation} />
+      <OfferToJoinSheet open={offerOpen} onOpenChange={setOfferOpen} person={offerPerson} />
     </div>
   );
 }
