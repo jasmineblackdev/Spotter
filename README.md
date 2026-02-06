@@ -1,73 +1,98 @@
-# Welcome to your Lovable project
+# Spotter 🏋️‍♀️❤️
+**From gym buddy to bae.**  
+Spotter is a gym-buddy-first dating app that matches people based on workout habits, schedules, and training style—so connection happens naturally.
 
-## Project info
+<img width="1024" height="1024" alt="2635b020-f602-4133-830b-e1d851a9d1cd" src="https://github.com/user-attachments/assets/57f627eb-d157-46e6-9f11-cba462f5360d" />
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+##  What Spotter Does
+- **Match by lifestyle, not just looks**
+- Show **training style**, **weekly frequency**, and **schedule overlap**
+- Start with **Gym Buddy mode** and optionally unlock **Bae Mode**
+- Built-in **workout invites** (no awkward “wyd”)
+- Privacy-first options for progress and boundaries
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## ✨ Core Features (MVP)
+- ✅ Onboarding: intent + goals + training style + schedule
+- ✅ Profiles: training badges + availability + vibe
+- ✅ Matching: “Spot Match %” based on overlap + compatibility
+- ✅ Chat with **one-tap workout invites**
+- ✅ **Bae Mode** unlock after mutual interest / shared sessions
+- ✅ Safety: verification, report tools, anti-bodyshame rules
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+##  Matching Logic (High Level)
+Spotter prioritizes:
+1. **Schedule overlap**
+2. **Training compatibility**
+3. **Intent alignment**
+4. **Energy / vibe fit**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Users see a transparent compatibility summary:
+> **85% Spot Match** — both train evenings, 4x/week, strength-focused.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+##  Product Pillars
+- **Low-pressure:** gym buddy first
+- **Healthy + supportive:** journey-friendly
+- **Action-based:** plan workouts, not endless texting
+- **Respectful:** boundaries + anti-shaming enforcement
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+##  Screens (MVP)
+1. Onboarding
+2. Profile setup
+3. Match feed
+4. Match profile
+5. Chat + workout invite
+6. Plans (workout/date scheduler)
+7. Bae Mode prompts
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+##  Tech Stack (Proposed)
+> Update these to match your build.
 
-**Edit a file directly in GitHub**
+**Frontend:** React Native (Expo)  
+**Backend:** Node.js + Express / Firebase  
+**Database:** Firestore / PostgreSQL  
+**Auth:** Firebase Auth / Auth0  
+**Storage:** Cloud Storage (photos)  
+**Maps/Distance:** Google Places / Mapbox  
+**Notifications:** FCM / Expo Notifications  
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Roadmap
+V1
+ Profile badges + schedule
+ Match scoring + feed
+ Chat + workout invite flows
+ Bae Mode unlock
+ Report + block tools
+ 
+V2
+ Gym/class event discovery
+ Weekly challenges (steps, workouts)
+ Advanced filters + premium tiers
+ Optional verification
+ 
+## Branding
+Name: Spotter
+Tagline: From gym buddy to bae
+Design vibe: Modern, bold, supportive
+Primary colors: Dark base + electric accent
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## Screenshots / Preview
+https://spotter-buddy-bae.lovable.app
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
