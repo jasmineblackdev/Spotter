@@ -13,6 +13,7 @@ interface WorkoutInviteCardProps {
   onAccept?: () => void;
   onDecline?: () => void;
   onMessage?: () => void;
+  onDirections?: () => void;
 }
 
 export function WorkoutInviteCard({
@@ -26,6 +27,7 @@ export function WorkoutInviteCard({
   onAccept,
   onDecline,
   onMessage,
+  onDirections,
 }: WorkoutInviteCardProps) {
   return (
     <div className="bg-card rounded-2xl p-4 border border-border/50 card-interactive">
@@ -75,7 +77,7 @@ export function WorkoutInviteCard({
             <Button variant="secondary" size="sm" className="flex-1" onClick={onMessage}>
               Message {from}
             </Button>
-            <Button variant="outline" size="sm" className="flex-1">
+            <Button variant="outline" size="sm" className="flex-1" onClick={onDirections}>
               Get Directions
             </Button>
           </>

@@ -7,7 +7,11 @@ import { AppLayout } from "./components/AppLayout";
 import Index from "./pages/Index";
 import ThisWeek from "./pages/ThisWeek";
 import Chats from "./pages/Chats";
+import ChatConversation from "./pages/ChatConversation";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
+import MyBoundaries from "./pages/MyBoundaries";
+import Settings from "./pages/Settings";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 
@@ -36,6 +40,10 @@ const App = () => (
             <Route path="/chats" element={<Chats />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
+          <Route path="/chat/:id" element={<ChatConversation />} />
+          <Route path="/profile/edit" element={<EditProfile />} />
+          <Route path="/profile/boundaries" element={<MyBoundaries />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
