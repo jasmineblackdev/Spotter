@@ -10,7 +10,6 @@ interface IntentStepProps {
 const intents = [
   {
     id: "gym-buddy",
-    icon: Dumbbell,
     emoji: "🏋️",
     title: "Gym Buddy Only",
     description: "Find consistent training partners. No dating expectations.",
@@ -18,7 +17,6 @@ const intents = [
   },
   {
     id: "gym-to-bae",
-    icon: Sparkles,
     emoji: "🧡",
     title: "Gym Buddy → Bae",
     description: "Start as workout partners, open to seeing where it goes.",
@@ -27,10 +25,9 @@ const intents = [
   },
   {
     id: "open-dating",
-    icon: Heart,
     emoji: "💕",
     title: "Open to Dating",
-    description: "Looking for connection with someone who values fitness.",
+    description: "Looking for connection with someone who values wellness.",
     color: "bae",
   },
 ];
@@ -48,7 +45,6 @@ export function IntentStep({ selectedIntent, onSelectIntent, onNext }: IntentSte
       <div className="space-y-3">
         {intents.map((intent) => {
           const isSelected = selectedIntent === intent.id;
-          const Icon = intent.icon;
           
           return (
             <button
