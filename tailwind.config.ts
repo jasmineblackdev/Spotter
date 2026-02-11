@@ -85,8 +85,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'Inter', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        display: ['Sora', 'DM Sans', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

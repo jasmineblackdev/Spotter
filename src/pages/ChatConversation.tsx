@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowLeft, Plus, Send, Phone, MoreVertical } from "lucide-react";
+import { ArrowLeft, Plus, Send, MoreVertical, Dumbbell } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
-const chatData: Record<string, { name: string; avatar: string; messages: { id: number; text: string; fromMe: boolean; time: string }[] }> = {
+const chatData: Record<string, { name: string; avatar: string; messages: { id: number; text: string; fromMe: boolean; time: string; isInvite?: boolean }[] }> = {
   "1": {
     name: "Alex",
     avatar: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100&h=100&fit=crop&crop=face",
@@ -48,10 +48,13 @@ const chatData: Record<string, { name: string; avatar: string; messages: { id: n
   },
 };
 
-const quickInvites = [
-  { icon: "🦵", label: "Leg day together?", time: "Tomorrow, 6pm" },
-  { icon: "🏃", label: "Cardio + coffee?", time: "This Weekend" },
-  { icon: "💪", label: "Need a spotter?", time: "Today, 5pm" },
+const activityInvites = [
+  { icon: "🦵", label: "Leg Day", time: "Tomorrow, 6pm" },
+  { icon: "🏃", label: "Cardio + Coffee", time: "This Weekend" },
+  { icon: "💪", label: "Need a Spotter", time: "Today, 5pm" },
+  { icon: "🏋️", label: "Full Body", time: "Tomorrow, 8am" },
+  { icon: "🔥", label: "HIIT Session", time: "This Evening" },
+  { icon: "🧘", label: "Yoga / Stretch", time: "Saturday AM" },
 ];
 
 export default function ChatConversation() {
@@ -73,10 +76,16 @@ export default function ChatConversation() {
     setNewMessage("");
   };
 
-  const handleQuickInvite = (invite: typeof quickInvites[0]) => {
+  const handleQuickInvite = (invite: typeof activityInvites[0]) => {
     setMessages((prev) => [
       ...prev,
-      { id: Date.now(), text: `${invite.icon} ${invite.label}\n📅 ${invite.time}`, fromMe: true, time: "Now" },
+      {
+        id: Date.now(),
+        text: `${invite.icon} ${invite.label}\n📅 ${invite.time}`,
+        fromMe: true,
+        time: "Now",
+        isInvite: true,
+      },
     ]);
     setShowInvites(false);
     toast.success("Workout invite sent!");
@@ -109,15 +118,23 @@ export default function ChatConversation() {
             <div
               className={cn(
                 "max-w-[75%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-line",
-                msg.fromMe
-                  ? "bg-primary text-primary-foreground rounded-br-md"
-                  : "bg-card border border-border/50 text-foreground rounded-bl-md"
+                msg.isInvite
+                  ? "bg-primary/15 border border-primary/30 text-foreground rounded-br-md"
+                  : msg.fromMe
+                    ? "bg-primary text-primary-foreground rounded-br-md"
+                    : "bg-card border border-border/50 text-foreground rounded-bl-md"
               )}
             >
+              {msg.isInvite && (
+                <div className="flex items-center gap-1.5 mb-1">
+                  <Dumbbell className="w-3 h-3 text-primary" />
+                  <span className="text-[10px] font-semibold text-primary uppercase tracking-wide">Workout Invite</span>
+                </div>
+              )}
               {msg.text}
               <div className={cn(
                 "text-[10px] mt-1",
-                msg.fromMe ? "text-primary-foreground/60" : "text-muted-foreground"
+                msg.isInvite ? "text-muted-foreground" : msg.fromMe ? "text-primary-foreground/60" : "text-muted-foreground"
               )}>
                 {msg.time}
               </div>
@@ -131,14 +148,17 @@ export default function ChatConversation() {
         <SheetContent side="bottom" className="bg-card border-border rounded-t-3xl pb-safe">
           <div className="sheet-handle" />
           <SheetHeader className="mb-4">
-            <SheetTitle className="font-display text-lg">Quick Workout Invite</SheetTitle>
+            <SheetTitle className="font-display text-lg">Invite to Workout</SheetTitle>
           </SheetHeader>
-          <div className="space-y-2 pb-4">
-            {quickInvites.map((invite) => (
+          <p className="text-sm text-muted-foreground mb-4">
+            Pick an activity — {chat.name} will get a one-tap invite
+          </p>
+          <div className="grid grid-cols-2 gap-2 pb-4">
+            {activityInvites.map((invite) => (
               <button
                 key={invite.label}
                 onClick={() => handleQuickInvite(invite)}
-                className="w-full flex items-center gap-3 p-4 rounded-2xl border border-border bg-muted/30 hover:bg-muted/50 transition-colors text-left"
+                className="flex items-center gap-3 p-4 rounded-2xl border border-border bg-muted/30 hover:bg-primary/10 hover:border-primary/30 transition-all text-left"
               >
                 <span className="text-2xl">{invite.icon}</span>
                 <div className="flex-1">
@@ -155,7 +175,7 @@ export default function ChatConversation() {
       <div className="px-4 py-3 bg-card/95 backdrop-blur-lg border-t border-border/50 pb-safe">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon-sm" onClick={() => setShowInvites(true)}>
-            <Plus className="w-5 h-5 text-primary" />
+            <Dumbbell className="w-5 h-5 text-primary" />
           </Button>
           <Input
             value={newMessage}

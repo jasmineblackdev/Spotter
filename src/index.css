@@ -2,23 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Spotter Design System - Dark, Premium, Energetic */
+/* Spotter Design System - Teal/Cyan, Energetic, Inclusive */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Sora:wght@500;600;700;800&display=swap');
 
 @layer base {
   :root {
-    /* Core palette */
-    --charcoal: 0 0% 10%;
-    --charcoal-light: 0 0% 14%;
-    --charcoal-lighter: 0 0% 18%;
-    --electric-blue: 187 100% 50%;
-    --electric-blue-glow: 187 100% 60%;
-    --warm-neutral: 30 47% 90%;
-    --warm-neutral-dark: 30 25% 70%;
+    /* Core palette — teal/cyan energy */
+    --charcoal: 220 15% 10%;
+    --charcoal-light: 220 12% 14%;
+    --charcoal-lighter: 220 10% 18%;
+    --electric-blue: 174 84% 46%;
+    --electric-blue-glow: 174 84% 56%;
+    --warm-neutral: 35 55% 90%;
+    --warm-neutral-dark: 35 30% 68%;
     
     /* System colors */
-    --success: 142 71% 45%;
+    --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 10%;
@@ -26,34 +26,34 @@
     --error-foreground: 0 0% 100%;
     
     /* Semantic tokens - Dark theme as default */
-    --background: 0 0% 7%;
-    --foreground: 0 0% 95%;
+    --background: 220 20% 6%;
+    --foreground: 210 20% 95%;
     
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 95%;
-    --card-elevated: 0 0% 12%;
+    --card: 220 15% 10%;
+    --card-foreground: 210 20% 95%;
+    --card-elevated: 220 12% 13%;
     
-    --popover: 0 0% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 220 12% 12%;
+    --popover-foreground: 210 20% 95%;
     
-    --primary: 187 100% 50%;
-    --primary-foreground: 0 0% 7%;
+    --primary: 174 84% 46%;
+    --primary-foreground: 220 20% 6%;
     
-    --secondary: 0 0% 18%;
-    --secondary-foreground: 0 0% 85%;
+    --secondary: 220 10% 18%;
+    --secondary-foreground: 210 10% 85%;
     
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 55%;
+    --muted: 220 12% 14%;
+    --muted-foreground: 215 10% 50%;
     
-    --accent: 30 47% 90%;
-    --accent-foreground: 0 0% 10%;
+    --accent: 35 55% 90%;
+    --accent-foreground: 220 20% 10%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 0 0% 18%;
-    --input: 0 0% 14%;
-    --ring: 187 100% 50%;
+    --border: 220 10% 18%;
+    --input: 220 12% 14%;
+    --ring: 174 84% 46%;
     
     --radius: 0.75rem;
     
@@ -61,22 +61,25 @@
     --bae-pink: 350 80% 60%;
     --bae-pink-glow: 350 80% 70%;
     
+    /* Teal accent range */
+    --teal-soft: 174 50% 30%;
+    
     /* Match score gradient */
-    --match-gradient: linear-gradient(135deg, hsl(187 100% 50%), hsl(200 100% 60%));
+    --match-gradient: linear-gradient(135deg, hsl(174 84% 46%), hsl(190 90% 55%));
     
     /* Glow effects */
-    --glow-primary: 0 0 20px hsl(187 100% 50% / 0.4);
+    --glow-primary: 0 0 20px hsl(174 84% 46% / 0.35);
     --glow-bae: 0 0 20px hsl(350 80% 60% / 0.4);
     
     /* Sidebar defaults */
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 0 0% 85%;
-    --sidebar-primary: 187 100% 50%;
-    --sidebar-primary-foreground: 0 0% 7%;
-    --sidebar-accent: 0 0% 14%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 187 100% 50%;
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 210 10% 85%;
+    --sidebar-primary: 174 84% 46%;
+    --sidebar-primary-foreground: 220 20% 6%;
+    --sidebar-accent: 220 12% 14%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 220 10% 18%;
+    --sidebar-ring: 174 84% 46%;
   }
 }
 
@@ -87,12 +90,12 @@
   
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'DM Sans', system-ui, sans-serif;
   }
   
   /* Typography scale */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-family: 'Sora', 'DM Sans', sans-serif;
     @apply font-semibold tracking-tight;
   }
   
@@ -116,7 +119,7 @@
   
   .text-gradient-primary {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(200 100% 60%));
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(190 90% 55%));
   }
   
   .text-gradient-bae {
